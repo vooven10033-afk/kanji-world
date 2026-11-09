@@ -1,0 +1,211 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>KANJI WORLD はじめての村づくり</title><style>*{box-sizing:border-box}body{margin:0;background:#fff4dc;color:#62442d;font-family:system-ui,'Hiragino Kaku Gothic ProN',sans-serif}header{text-align:center;padding:12px;font-size:21px;font-weight:900;background:#fff1cd}.wrap{max-width:960px;margin:auto;padding:10px}#game{width:100%;aspect-ratio:4/3;max-height:66vh;display:block;border:5px solid #b48a55;border-radius:18px;background:#a7d58a;touch-action:none;box-shadow:0 5px 18px #684d2c33}.hud{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:8px 0;flex-wrap:wrap}.pill{background:white;border:2px solid #d9b77d;border-radius:14px;padding:7px 12px;font-weight:bold}button{cursor:pointer;border:2px solid #b98c57;background:#ffe3a6;color:#60452e;border-radius:14px;padding:10px 14px;font-size:16px;font-weight:800}.explorebar{display:flex;justify-content:space-between;gap:6px;flex-wrap:wrap;font-size:12px;font-weight:800;margin:7px 0;color:#745336}.explorebar span{background:#fff9e8;border-radius:12px;padding:7px 10px;border:1px solid #d9b77d}.note{text-align:center;font-size:14px;line-height:1.7}.overlay{position:fixed;inset:0;background:#43311dcc;display:flex;align-items:center;justify-content:center;padding:14px;z-index:10}.overlay[hidden]{display:none}.panel{background:#fff8e8;border:5px solid #c7a26d;border-radius:24px;padding:17px;width:min(570px,100%);max-height:95vh;overflow:auto;text-align:center}.panel h2{margin:5px 0}.heroes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.hero{background:#fff;border:3px solid #dec7a2;border-radius:15px;padding:8px 2px;font-size:12px;min-width:0}.hero[aria-pressed=true]{border-color:#f07caa;background:#ffebf3}.preview{height:94px;display:flex;align-items:center;justify-content:center}.preview svg{height:90px;width:80px}.hero strong{display:block}.panel input{font-size:18px;border:2px solid #c4a16e;border-radius:12px;padding:11px;width:90%;margin:12px auto}.start{background:#f8a1ba;border-color:#db7193;padding:13px 22px}.msg{min-height:20px;color:#aa3758}@media(max-width:430px){header{font-size:18px}.preview{height:76px}.preview svg{height:73px}.hero{font-size:11px}.panel{padding:10px}}#actions{margin:10px 0;padding:13px;background:#fff9e8;border:3px solid #c7a26d;border-radius:18px;text-align:center}#actions[hidden],#quizbox[hidden]{display:none}#actionButtons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:9px}#actionButtons button{padding:12px 4px;font-size:16px}#actionTitle{font-size:19px;font-weight:900}#actionStatus{font-size:14px;margin:8px 0;color:#745336}#quizbox{background:#fff0d3;padding:10px;border-radius:12px;margin-top:8px}#quizbox button{margin:4px}#buildBar{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:10px 0}#buildTip{font-size:13px;font-weight:700}#buildBtn[disabled]{opacity:.55}#supplies{font-weight:800;background:#fff9e8;border-radius:12px;padding:8px;margin:8px 0}ruby rt{font-size:.55em}#supplies{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;font-size:14px;text-align:left}#supplies .supply{padding:7px 9px;background:#fff;border:1px solid #ead7b4;border-radius:12px;white-space:nowrap}#houseActions{margin:10px 0;padding:14px;background:#fff9e8;border:3px solid #c7a26d;border-radius:18px;text-align:center}#houseActions[hidden],#inside[hidden]{display:none}#houseActions button{margin:5px;min-width:42%}#inside{position:fixed;inset:0;background:#3d2b20bb;display:flex;align-items:center;justify-content:center;z-index:9;padding:12px}#inside .room{width:min(540px,100%);background:#fff9e9;border:5px solid #b68c60;border-radius:22px;padding:20px;text-align:center}#inside .roomArt{height:230px;background:linear-gradient(#ffe8bd 0 73%,#c78d62 73%);border:7px solid #e8c795;border-radius:14px;position:relative;margin:12px 0;overflow:hidden}#inside .window{position:absolute;left:12%;top:15%;width:72px;height:82px;background:#b7e3ef;border:9px solid #b78658;box-shadow:inset 0 0 0 2px white}#inside .window:after{content:'';position:absolute;left:50%;height:100%;border-left:5px solid #b78658}#inside .rug{position:absolute;bottom:8%;left:24%;width:54%;height:36px;border-radius:50%;background:#e8b7a6}#inside .table{position:absolute;bottom:20%;left:45%;font-size:58px}#inside .flower{position:absolute;bottom:19%;right:10%;font-size:44px}@media(min-width:600px){#supplies{grid-template-columns:repeat(5,minmax(0,1fr))}} #inside .roomArt{height:300px;touch-action:none;cursor:crosshair}#inside .roomArt .walker{position:absolute;width:56px;height:80px;left:50%;top:65%;transform:translate(-50%,-50%);z-index:5;pointer-events:none;filter:drop-shadow(1px 4px 2px #6a4c3c55)}#inside .roomArt .walker svg{width:100%;height:100%}#inside .roomArt .walkMark{position:absolute;width:20px;height:12px;border:2px solid #fff;border-radius:50%;pointer-events:none;display:none;z-index:4}#inside .roomArt .table,#inside .roomArt .flower{pointer-events:none}#inside .roomHelp{font-size:14px;font-weight:700;margin:6px 0}#inside .roomArt .rug{pointer-events:none}
+#furniturePanel{background:#fff0d7;border:2px solid #d4b386;border-radius:14px;padding:9px;margin:8px 0}
+#furniturePanel .furnBtns{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:7px 0}
+#furniturePanel button{font-size:13px;padding:7px 9px}
+#furniturePanel button[aria-pressed="true"]{background:#f8b7cb;border-color:#d66f95}
+#furnitureStatus{font-size:13px;font-weight:700;min-height:20px;margin:5px 0}
+#inside .room{max-height:96dvh;overflow-y:auto;padding:12px}
+#inside .roomArt{height:250px;margin:8px 0}
+#inside .roomArt .placedFurniture{position:absolute;transform:translate(-50%,-75%);font-size:60px;z-index:6;pointer-events:auto;cursor:pointer;touch-action:none;min-width:62px;min-height:65px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(1px 3px 2px #62442d66)}
+#inside .roomArt .placedFurniture.selected{background:#fff5b999;border:3px dashed #c77c56;border-radius:15px;filter:drop-shadow(0 0 7px #f6d15a)}
+#inside .roomArt.placing{outline:3px dashed #e78c9d;outline-offset:-9px}
+#inside .roomHelp{margin:4px 0}
+
+/* おへやの ものの おおきさを そろえる */
+#inside .window{left:13%;top:13%;width:43px;height:55px;border-width:6px}
+#inside .window:after{border-left-width:3px}
+#inside .roomArt .placedFurniture{font-size:88px;min-width:92px;min-height:92px;transform:translate(-50%,-78%);user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:none;z-index:7}
+#inside .roomArt .placedFurniture.bed{font-size:95px}
+#inside .roomArt .placedFurniture.desk{font-size:88px}
+#inside .roomArt .placedFurniture.dragging{filter:drop-shadow(0 6px 7px #62442daa);background:#fff5b977;border:2px dashed #c77c56;border-radius:18px;z-index:12}
+#inside .roomArt .walker{z-index:6}
+#inside .roomArt .table{font-size:45px;left:47%}
+#inside .roomArt .flower{font-size:35px;right:7%}
+
+/* おへやは しょうめんからみる 2D のまま */
+#inside .roomArt{height:250px;background:linear-gradient(#ffe8bd 0 73%,#c78d62 73%);box-shadow:none;perspective:none}
+#inside .roomArt:before,#inside .roomArt:after{content:none}
+#inside .roomArt .window{z-index:2;top:13%;left:13%;transform:none;box-shadow:inset 0 0 0 2px white}
+#inside .roomArt .rug{z-index:3;bottom:8%;height:36px;transform:none;background:#e8b7a6}
+#inside .roomArt .walker{z-index:6}
+#inside .roomArt .placedFurniture{z-index:7}
+#mapHud{display:flex;align-items:center;gap:8px;margin:6px 0;justify-content:space-between}
+#miniMap{width:128px;height:105px;border:3px solid #ad875a;border-radius:12px;background:#d9e9bc;touch-action:manipulation;cursor:pointer}
+#openMap{font-size:14px;padding:9px 11px}
+#mapOverlay[hidden]{display:none}
+#mapOverlay{position:fixed;inset:0;z-index:20;background:#30271ac9;display:flex;justify-content:center;align-items:center;padding:12px}
+#mapOverlay .mapPanel{background:#fff8e7;border:4px solid #bb9563;border-radius:20px;padding:12px;width:min(550px,100%);text-align:center;max-height:94dvh;overflow:auto}
+#bigMap{width:100%;aspect-ratio:1.2;max-height:52dvh;border:3px solid #b89465;border-radius:12px;background:#d9e9bc;touch-action:none}
+#mapHelp{font-size:13px;line-height:1.6;min-height:36px;margin:8px 0}
+#mapClose{margin:6px}
+</style></head><body><header>🌸 KANJI WORLD — はじめての むらづくり 🏡</header><main class="wrap"><div class="hud"><span class="pill" id="heroLabel">🌱 はじまりの草原</span><button id="change">👤 キャラをかえる</button></div><div class="explorebar"><span id="distance">🏕️ はじまりの場所：0m</span><span id="found">🌼 見つけた場所：0 / 5</span></div><div id="mapHud"><span class="pill">🧭 いまいる ばしょ <small>🔵 じぶん</small></span><canvas id="miniMap" width="256" height="210" aria-label="ちずを ひらく"></canvas><button id="openMap">🗺️ ちずを みる</button></div><canvas id="game" width="800" height="600" aria-label="広い草原。行きたい場所をタップすると主人公が歩きます"></canvas><div id="actions" hidden><div id="actionTitle"></div><div id="actionStatus">なにを する？</div><div id="actionButtons"><button id="inspect">🔎 しらべる</button><button id="gather">🪵 あつめる</button><button id="quiz">📖 クイズ</button><button id="leave">👣 たんけんする</button></div><div id="quizbox" hidden><div id="quizQuestion"></div><div id="quizChoices"></div><div id="quizHint" class="msg" aria-live="polite"></div></div></div><div id="houseActions" hidden><strong id="houseTitle">🏡 おうちに ついたよ！</strong><p id="houseStatus" aria-live="polite">なにを する？</p><button id="enterHouse">🚪 はいる</button><button id="inspectHouse">🔎 しらべる</button><button id="leaveHouse">👣 たんけんする</button></div><div id="buildBar"><button id="buildBtn">🏠 <ruby>家<rt>いえ</rt></ruby>を たてる</button><span id="buildTip" aria-live="polite">🪵 もくざい 4こ ＋ 🪨 いし 2こ</span></div><div id="supplies"><span class="supply">🪵 もくざい：<span id="wood">0</span>こ</span><span class="supply">💧 みず：<span id="water">0</span>こ</span><span class="supply">🌼 はな：<span id="petals">0</span>こ</span><span class="supply">🪨 いし：<span id="stone">0</span>こ</span><span class="supply">🌟 はっけん：<span id="foundCount">0</span>/5</span></div><p class="note">🌷 草原をタップして、遠くまでたんけんしよう！<br>🌳 木や池で クイズに こたえて、むらの ざいりょうを あつめよう！<br>🏠 ざいりょうが そろったら、すきな ばしょに <ruby>家<rt>いえ</rt></ruby>を たてよう！</p></main><div id="mapOverlay" hidden><div class="mapPanel"><h2>🗺️ たんけんの ちず</h2><p>🔵 じぶん　⭐ みつけた ばしょ　🏡 おうち</p><canvas id="bigMap" width="560" height="460" aria-label="たんけんの ちず"></canvas><p id="mapHelp">⭐ みつけた ばしょを タップすると、そこまで あるくよ！</p><button id="mapClose">🚪 ちずを とじる</button></div></div><div id="inside" hidden><div class="room"><h2>🏡 わたしの おうち</h2><p>おうちの なかに はいったよ！</p><div class="roomArt" id="walkRoom" aria-label="おうちの中。行きたいところをタップして歩こう"><div class="window"></div><div class="rug"></div><div class="walker" id="roomWalker"></div><div class="walkMark" id="walkMark"></div></div><p class="roomHelp" id="roomHelp" aria-live="polite">👣 ゆかを タップすると あるくよ！ かぐは ながおしして うごかそう！</p><div id="furniturePanel"><strong>🪵 かぐを つくろう！</strong><div class="furnBtns" id="furnitureButtons"><button data-furn="bed">🛏️ ベッド<br>🪵 3こ 🌼 1こ</button><button data-furn="desk">🪑 つくえ<br>🪵 2こ 🪨 1こ</button></div><p id="furnitureStatus" aria-live="polite">つくりたい かぐを えらんでね！</p><button id="cancelFurniture" hidden>❌ おくのを やめる</button></div><button id="exitHouse">🚪 そとに でる</button></div></div><div class="overlay" id="overlay"><div class="panel"><h2>🌸 しゅじんこうを えらんでね！</h2><p>すきな なかまを タップしよう</p><div class="heroes" id="heroes"></div><input id="name" maxlength="12" placeholder="なまえを いれてね"><div><button class="start" id="start">🌱 このキャラで はじめる！</button></div><div class="msg" id="msg"></div></div></div><script>
+const types=[['ぼうけんか','#e77d53','#9b592d','🗡️'],['まほうつかい','#9b83cf','#648fc8','⭐'],['レンジャー','#74aa71','#8b7043','🏹'],['ヒーラー','#a6c9e6','#efc66d','💗'],['にんじゃ','#646b8c','#34384e','✦'],['はつめいか','#f2a3b4','#dc8596','⚙']];
+function heroSVG(i){const t=types[i],hat=i===1?'<path d="M17 36 L40 3 L62 36Z" fill="#7761b3" stroke="#65508d" stroke-width="2"/><ellipse cx="40" cy="36" rx="32" ry="6" fill="#8069bd"/>':i===2?'<path d="M10 29 Q40 0 70 29 L63 37 L18 37Z" fill="#64965e" stroke="#567d4c" stroke-width="2"/>':i===4?'<path d="M13 28 Q40 17 67 28 L65 38 L15 38Z" fill="#555a75"/>':'<path d="M17 30 Q40 4 63 30 L60 35 L20 35Z" fill="'+t[1]+'"/>';return `<svg viewBox="0 0 80 112" xmlns="http://www.w3.org/2000/svg"><ellipse cx="40" cy="106" rx="23" ry="4" fill="#624d3b" opacity=".2"/><path d="M25 85 L23 104 L36 104 L40 86 M45 86 L45 104 L58 104 L55 85" fill="#6f5846" stroke="#59402e" stroke-width="3"/><path d="M21 65 Q40 53 59 65 L64 90 Q40 100 16 90Z" fill="${t[1]}" stroke="#8e694b" stroke-width="2"/><path d="M22 68 L12 83 M58 68 L69 83" stroke="#f5cda7" stroke-width="9" stroke-linecap="round"/><path d="M15 40 Q10 12 40 12 Q70 12 65 42 L65 61 Q40 73 15 61Z" fill="${t[2]}"/><ellipse cx="40" cy="44" rx="23" ry="26" fill="#ffe0b8" stroke="#b58762" stroke-width="2"/><path d="M17 34 Q28 8 42 21 Q56 11 64 35 Q44 28 35 27 Q27 39 17 34" fill="${t[2]}"/>${hat}<ellipse cx="32" cy="47" rx="2.7" ry="3.5" fill="#4a3831"/><ellipse cx="48" cy="47" rx="2.7" ry="3.5" fill="#4a3831"/><path d="M35 58 Q40 63 45 58" fill="none" stroke="#bb756d" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="55" r="4" fill="#f2a3a0" opacity=".65"/><circle cx="58" cy="55" r="4" fill="#f2a3a0" opacity=".65"/><text x="40" y="83" text-anchor="middle" font-size="15">${t[3]}</text></svg>`}
+const heroes=document.getElementById('heroes');let chosen=0;types.forEach((t,i)=>{let b=document.createElement('button');b.className='hero';b.dataset.i=i;b.setAttribute('aria-pressed',i===0?'true':'false');b.innerHTML=`<div class="preview">${heroSVG(i)}</div><strong>${t[0]}</strong>`;b.onclick=()=>{chosen=i;document.querySelectorAll('.hero').forEach((x,j)=>x.setAttribute('aria-pressed',j===i?'true':'false'))};heroes.append(b)});
+const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');let player={x:0,y:0},target=null,pressed=new Set(),steps=0,heroImg=new Image(),active=false,heroName='';function updateHero(){heroImg.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(heroSVG(chosen));document.getElementById('heroLabel').textContent='🌱 '+heroName+' の草原'}
+function start(){heroName=document.getElementById('name').value.trim()||'ぼうけんしゃ';active=true;updateHero();document.getElementById('overlay').hidden=true;try{localStorage.setItem('kanji-grassland',JSON.stringify({chosen,heroName}))}catch(e){}}document.getElementById('start').onclick=start;document.getElementById('change').onclick=()=>{document.getElementById('overlay').hidden=false;target=null;pressed.clear()};try{let s=JSON.parse(localStorage.getItem('kanji-grassland'));if(s&&Number.isInteger(s.chosen)&&s.chosen>=0&&s.chosen<6){chosen=s.chosen;document.querySelectorAll('.hero').forEach((x,j)=>x.setAttribute('aria-pressed',j===chosen?'true':'false'));document.getElementById('name').value=s.heroName||'';heroName=s.heroName||'ぼうけんしゃ';updateHero();active=true;document.getElementById('overlay').hidden=true}}catch(e){}
+function rnd(x,y){let v=Math.sin(x*127.1+y*311.7)*43758.5453;return v-Math.floor(v)}function ground(){const w=canvas.width,h=canvas.height,cx=player.x,cy=player.y;ctx.fillStyle='#addb90';ctx.fillRect(0,0,w,h);let size=72,minX=Math.floor((cx-w/2)/size)-1,maxX=Math.ceil((cx+w/2)/size)+1,minY=Math.floor((cy-h/2)/size)-1,maxY=Math.ceil((cy+h/2)/size)+1;for(let gx=minX;gx<=maxX;gx++)for(let gy=minY;gy<=maxY;gy++){let x=gx*size-cx+w/2,y=gy*size-cy+h/2,r=rnd(gx,gy);if(r>.77){ctx.fillStyle='#bce49c';ctx.beginPath();ctx.ellipse(x+30,y+30,38,22,r*6,0,Math.PI*2);ctx.fill()}for(let j=0;j<4;j++){let xx=x+rnd(gx*7+j,gy*3+j)*size,yy=y+rnd(gx*4+j,gy*8+j)*size;ctx.strokeStyle='#79b968';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(xx,yy+5);ctx.lineTo(xx-2,yy);ctx.lineTo(xx+2,yy+2);ctx.stroke()}if(r>.87){let fx=x+size*.65,fy=y+size*.35;ctx.fillStyle=['#f8a8b7','#ffe18b','#fff8ef'][Math.floor(r*100)%3];for(let k=0;k<5;k++){let a=k*Math.PI*2/5;ctx.beginPath();ctx.arc(fx+Math.cos(a)*5,fy+Math.sin(a)*5,4,0,Math.PI*2);ctx.fill()}ctx.fillStyle='#f5c45e';ctx.beginPath();ctx.arc(fx,fy,3,0,7);ctx.fill()}}}
+const places=[{x:450,y:-180,kind:'tree',name:'おおきな木'},{x:-560,y:240,kind:'pond',name:'ちいさな池'},{x:320,y:670,kind:'flowers',name:'お花ばたけ'},{x:-850,y:-500,kind:'rock',name:'ふしぎな岩'},{x:1000,y:150,kind:'tree',name:'こもれびの木'}];const discovered=new Set();let wood=0,nearby=null,menuDismissed=-1;const actions=document.getElementById('actions'),quizbox=document.getElementById('quizbox'),status=document.getElementById('actionStatus');function nearPlace(){let best=-1,dist=135;places.forEach((p,i)=>{const d=Math.hypot(player.x-p.x,player.y-p.y);if(d<dist){dist=d;best=i}});return best}function showActions(){let n=nearPlace();if(n!==nearby){nearby=n;menuDismissed=-1;quizbox.hidden=true;status.textContent='なにを する？'}if(n>=0&&menuDismissed!==n){actions.hidden=false;document.getElementById('actionTitle').textContent='🌿 '+places[n].name+' に ついたよ！'}else actions.hidden=true}document.getElementById('inspect').onclick=()=>{status.textContent='🔎 '+places[nearby].name+' を はっけん！ ここを おぼえたよ。'};const stock={wood:0,water:0,petals:0,stone:0};
+const houses=[];let building=false;let nearHouse=-1,houseDismissed=-1;const houseActions=document.getElementById('houseActions');function updateHouseActions(){let n=-1,d=140;houses.forEach((h,i)=>{let v=Math.hypot(player.x-h.x,player.y-h.y);if(v<d){d=v;n=i}});if(n!==nearHouse){nearHouse=n;houseDismissed=-1;document.getElementById('houseStatus').textContent='なにを する？'}houseActions.hidden=building||n<0||houseDismissed===n;if(!houseActions.hidden){actions.hidden=true;quizbox.hidden=true}}document.getElementById('enterHouse').onclick=()=>{if(nearHouse<0)return;target=null;insideHouseIndex=nearHouse;document.getElementById('inside').hidden=false;initRoomWalker();resetFurnitureMode();drawFurniture();furnitureStatus.textContent='つくりたい かぐを えらんでね！'};document.getElementById('exitHouse').onclick=()=>{resetFurnitureMode();document.getElementById('inside').hidden=true;houseDismissed=nearHouse;houseActions.hidden=true};document.getElementById('inspectHouse').onclick=()=>{document.getElementById('houseStatus').textContent='🔎 じぶんで たてた おうちだよ！ かぐは これから ふやせるよ。'};document.getElementById('leaveHouse').onclick=()=>{houseDismissed=nearHouse;houseActions.hidden=true};
+const buildBtn=document.getElementById('buildBtn'),buildTip=document.getElementById('buildTip');
+function saveVillage(){try{localStorage.setItem('kanji-world-village-v1',JSON.stringify({stock,houses,discovered:[...discovered],x:player.x,y:player.y}))}catch(e){}}
+function updateBuild(){buildBtn.textContent=building?'❌ やめる':'🏠 家を たてる';buildTip.textContent=building?'🌱 草原の すきな ばしょを タップ！':'🪵 もくざい 4こ ＋ 🪨 いし 2こ';}
+function beginBuild(){if(building){building=false;updateBuild();return}if(stock.wood<4||stock.stone<2){buildTip.textContent='ざいりょうが たりないよ！ 木と岩で あつめよう';return}building=true;target=null;houseActions.hidden=true;actions.hidden=true;quizbox.hidden=true;updateBuild()}
+buildBtn.onclick=beginBuild;
+function placeHouse(x,y){if(Math.hypot(x,y)<110||places.some(p=>Math.hypot(x-p.x,y-p.y)<150)||houses.some(h=>Math.hypot(x-h.x,y-h.y)<150)){buildTip.textContent='そこには おけないよ。ほかの ばしょを タップ！';return}houses.push({x,y});nearHouse=-1;houseDismissed=-1;stock.wood-=4;stock.stone-=2;['wood','stone'].forEach(k=>document.getElementById(k).textContent=stock[k]);building=false;updateBuild();buildTip.textContent='🎉 おうちが できた！ じどうで ほぞんしたよ';saveVillage()}
+try{const old=JSON.parse(localStorage.getItem('kanji-world-village-v1'));if(old){for(const k of Object.keys(stock))stock[k]=Math.max(0,Math.floor(Number(old.stock?.[k])||0));if(Array.isArray(old.houses))old.houses.slice(0,100).forEach(h=>{if(Number.isFinite(h.x)&&Number.isFinite(h.y))houses.push({x:h.x,y:h.y})});if(Array.isArray(old.discovered))old.discovered.forEach(i=>{if(Number.isInteger(i)&&i>=0&&i<places.length)discovered.add(i)});if(Number.isFinite(old.x)&&Number.isFinite(old.y)){player.x=old.x;player.y=old.y}for(const k of Object.keys(stock))document.getElementById(k).textContent=stock[k]}}catch(e){}
+const questions={
+ tree:[
+ {q:'「木」＋「木」で できる かんじは？',a:['林','森','本'],correct:0,h:'木が 2つで「林（はやし）」だよ。'},
+ {q:'「木」＋「木」＋「木」で できる かんじは？',a:['村','森','休'],correct:1,h:'木が 3つで「森（もり）」だよ。'},
+ {q:'「木」と「目」を あわせると？',a:['相','林','机'],correct:0,h:'「相（あい）」になるよ。'},
+ {q:'「木」と「寸」を あわせると？',a:['村','校','林'],correct:0,h:'「村（むら）」になるよ。'}],
+ pond:[
+ {q:'「池」の よみかたは？',a:['うみ','いけ','かわ'],correct:1,h:'池（いけ）だよ。'},
+ {q:'「水」の よみかたは？',a:['みず','そら','つち'],correct:0,h:'水（みず）だよ。'},
+ {q:'「川」の よみかたは？',a:['やま','はな','かわ'],correct:2,h:'川（かわ）だよ。'},
+ {q:'「海」の よみかたは？',a:['うみ','いけ','もり'],correct:0,h:'海（うみ）だよ。'}],
+ flowers:[
+ {q:'「花」は どれの こと？',a:['🌳 き','🌼 はな','💧 みず'],correct:1,h:'花（はな）は 🌼 だよ。'},
+ {q:'「草」は どれの こと？',a:['🌿 くさ','🪨 いし','🌙 つき'],correct:0,h:'草（くさ）は 🌿 だよ。'},
+ {q:'「空」は どれの こと？',a:['🏠 いえ','🐟 さかな','☁️ そら'],correct:2,h:'空（そら）は ☁️ だよ。'},
+ {q:'「雨」は どれの こと？',a:['☀️ はれ','🌧️ あめ','🔥 ひ'],correct:1,h:'雨（あめ）は 🌧️ だよ。'}],
+ rock:[
+ {q:'「山」の よみかたは？',a:['やま','かわ','そら'],correct:0,h:'山（やま）だよ。'},
+ {q:'「石」の よみかたは？',a:['いし','つち','き'],correct:0,h:'石（いし）だよ。'},
+ {q:'「岩」は なにで できている？',a:['みず','いし','はな'],correct:1,h:'岩（いわ）は かたい 石（いし）だよ。'},
+ {q:'「土」の よみかたは？',a:['ひ','つち','もり'],correct:1,h:'土（つち）だよ。'}]};
+let lastQuestion={},currentQuestion=null,answered=false;
+function reward(kind,n){stock[kind]+=n;const id={wood:'wood',water:'water',petals:'petals',stone:'stone'}[kind];document.getElementById(id).textContent=stock[kind];saveVillage()}
+function placeReward(){const k=places[nearby].kind;return {tree:['wood','🪵 もくざい'],pond:['water','💧 みず'],flowers:['petals','🌼 はな'],rock:['stone','🪨 いし']}[k]||['wood','🪵 もくざい']}
+document.getElementById('gather').onclick=()=>{if(nearby<0)return;const [kind,label]=placeReward();reward(kind,1);status.textContent=label+' を 1こ あつめたよ！'};
+function nextQuiz(){if(nearby<0)return;const kind=places[nearby].kind, pool=questions[kind]||questions.tree;let index=Math.floor(Math.random()*pool.length);if(pool.length>1&&index===lastQuestion[kind])index=(index+1+Math.floor(Math.random()*(pool.length-1)))%pool.length;lastQuestion[kind]=index;currentQuestion=pool[index];answered=false;document.getElementById('quizHint').textContent='';document.getElementById('quizQuestion').textContent=currentQuestion.q;const area=document.getElementById('quizChoices');area.replaceChildren();currentQuestion.a.forEach((answer,i)=>{const b=document.createElement('button');b.textContent=answer;b.onclick=()=>{if(answered)return;if(i===currentQuestion.correct){answered=true;const [key,label]=placeReward();reward(key,2);document.getElementById('quizHint').textContent='🎉 せいかい！ '+currentQuestion.h+' '+label+' を 2こ ゲット！';status.textContent='🎉 せいかい！ つぎの もんだいにも ちょうせんできるよ。';const next=document.createElement('button');next.textContent='➡️ つぎの もんだい';next.onclick=nextQuiz;area.replaceChildren(next)}else{document.getElementById('quizHint').textContent='🌱 おしい！ もういちど えらんでね。'}};area.append(b)})}
+document.getElementById('quiz').onclick=()=>{quizbox.hidden=false;status.textContent='📖 かんじの クイズに こたえよう！';nextQuiz()};
+document.getElementById('leave').onclick=()=>{menuDismissed=nearby;actions.hidden=true;quizbox.hidden=true};
+function drawHouses(layer){for(const h of houses){if((layer==='back')!==(h.y<=player.y+20))continue;const x=h.x-player.x+canvas.width/2,y=h.y-player.y+canvas.height/2;if(x< -150||x>canvas.width+150||y< -170||y>canvas.height+160)continue;ctx.save();ctx.translate(x,y);ctx.fillStyle='#6b563d33';ctx.beginPath();ctx.ellipse(0,35,75,23,0,0,7);ctx.fill();ctx.fillStyle='#f2d49d';ctx.beginPath();ctx.roundRect(-52,-38,104,83,7);ctx.fill();ctx.strokeStyle='#b48a55';ctx.lineWidth=4;ctx.stroke();ctx.fillStyle='#b75f53';ctx.beginPath();ctx.moveTo(-68,-37);ctx.lineTo(0,-112);ctx.lineTo(68,-37);ctx.closePath();ctx.fill();ctx.strokeStyle='#8c4d43';ctx.lineWidth=5;ctx.stroke();for(let i=-40;i<=40;i+=16){ctx.strokeStyle='#d78d72';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(i,-52);ctx.lineTo(i+12,-45);ctx.stroke()}ctx.fillStyle='#8a5739';ctx.beginPath();ctx.roundRect(-15,-2,30,47,5);ctx.fill();ctx.fillStyle='#f7d991';ctx.beginPath();ctx.arc(8,22,3,0,7);ctx.fill();for(let a of [-38,20]){ctx.fillStyle='#a6dce4';ctx.fillRect(a,-25,20,23);ctx.strokeStyle='#a7794c';ctx.lineWidth=4;ctx.strokeRect(a,-25,20,23);ctx.beginPath();ctx.moveTo(a+10,-25);ctx.lineTo(a+10,-2);ctx.stroke()}ctx.font='24px system-ui';ctx.fillText('🌼',-62,44);ctx.fillText('🌷',45,44);ctx.restore()}}
+function scenery(layer){const w=canvas.width,h=canvas.height;for(const p of [{x:0,y:0,kind:'camp',name:'はじまり'},...places]){const x=p.x-player.x+w/2,y=p.y-player.y+h/2;if(x < -140||x>w+140||y< -140||y>h+140)continue;if(layer==='back'&&p.kind==='tree'&&p.y>player.y+15)continue;if(layer==='front'&&(p.kind!=='tree'||p.y<=player.y+15))continue;if(layer==='front'&&p.kind==='camp')continue;ctx.save();ctx.translate(x,y);if(p.kind==='tree'){ctx.fillStyle='#86623f';ctx.fillRect(-12,-20,24,70);for(let j=0;j<5;j++){ctx.fillStyle=['#6ca85d','#83bd70','#579b54'][j%3];ctx.beginPath();ctx.arc(Math.cos(j*2.5)*29,-45+Math.sin(j*2.5)*19,34,0,7);ctx.fill()}}else if(p.kind==='pond'){ctx.fillStyle='#8ad5dc';ctx.beginPath();ctx.ellipse(0,15,105,62,-.2,0,7);ctx.fill();ctx.strokeStyle='#d7f6ed';ctx.lineWidth=5;ctx.stroke()}else if(p.kind==='flowers'){for(let j=0;j<24;j++){let a=j*2.4,r=Math.sqrt(j)*17;ctx.fillStyle=['#f4a7b9','#ffe5a0','#fff6ef','#c7a6e8'][j%4];ctx.beginPath();ctx.arc(Math.cos(a)*r,Math.sin(a)*r,9,0,7);ctx.fill()}}else if(p.kind==='rock'){ctx.fillStyle='#b7aaa0';ctx.beginPath();ctx.moveTo(-66,37);ctx.lineTo(-40,-34);ctx.lineTo(23,-53);ctx.lineTo(71,21);ctx.lineTo(38,45);ctx.closePath();ctx.fill();ctx.strokeStyle='#8c827b';ctx.lineWidth=5;ctx.stroke()}else{ctx.fillStyle='#d6b78a';ctx.beginPath();ctx.ellipse(0,15,47,24,0,0,7);ctx.fill();ctx.font='45px system-ui';ctx.textAlign='center';ctx.fillText('🏕️',0,4)}ctx.font='bold 17px system-ui';ctx.textAlign='center';ctx.lineWidth=4;ctx.strokeStyle='#fff9e9';ctx.strokeText(p.name,0,p.kind==='tree'?-93:87);ctx.fillStyle='#62442d';ctx.fillText(p.name,0,p.kind==='tree'?-93:87);ctx.restore()}}
+function discover(){for(let i=0;i<places.length;i++)if(Math.hypot(player.x-places[i].x,player.y-places[i].y)<135)discovered.add(i);document.getElementById('found').textContent='🌼 見つけた場所：'+discovered.size+' / 5';document.getElementById('foundCount').textContent=discovered.size;document.getElementById('distance').textContent='🏕️ はじまりから：約'+Math.round(Math.hypot(player.x,player.y)/20)+'m'}
+function draw(t){ground();scenery('back');drawHouses('back');const w=canvas.width,h=canvas.height;ctx.fillStyle='#496a3b33';ctx.beginPath();ctx.ellipse(w/2,h/2+7,29,9,0,0,7);ctx.fill();let bounce=(target||pressed.size)?Math.sin(steps*.28)*5:0;if(heroImg.complete&&heroImg.naturalWidth){ctx.save();ctx.translate(w/2,h/2-95+bounce);ctx.drawImage(heroImg,-44,0,88,123);ctx.restore()}else{ctx.fillStyle='#f7d6b3';ctx.beginPath();ctx.arc(w/2,h/2-55,24,0,7);ctx.fill()}ctx.fillStyle='#ffffffb9';ctx.font='bold 18px system-ui';ctx.textAlign='center';ctx.fillText(heroName||'ぼうけんしゃ',w/2,h/2-110+bounce);scenery('front');drawHouses('front');if(target){let sx=target.x-player.x+w/2,sy=target.y-player.y+h/2;ctx.strokeStyle='#fff9d1';ctx.lineWidth=3;ctx.beginPath();ctx.arc(sx,sy,12,0,7);ctx.stroke()}}
+let last=performance.now();let saveTick=0;function frame(now){let dt=Math.min((now-last)/1000,.05);last=now;if(active){let dx=0,dy=0;if(pressed.has('up'))dy--;if(pressed.has('down'))dy++;if(pressed.has('left'))dx--;if(pressed.has('right'))dx++;if(dx||dy){target=null;let d=Math.hypot(dx,dy);player.x+=dx/d*205*dt;player.y+=dy/d*205*dt;steps+=205*dt/10}else if(target){let tx=target.x-player.x,ty=target.y-player.y,d=Math.hypot(tx,ty);if(d<4){target=null}else{let move=Math.min(d,205*dt);player.x+=tx/d*move;player.y+=ty/d*move;steps+=move/10}}}discover();if(!building){showActions();updateHouseActions()}draw(now);if(active&&++saveTick%180===0)saveVillage();requestAnimationFrame(frame)}requestAnimationFrame(frame);
+canvas.addEventListener('pointerdown',e=>{if(!active||!document.getElementById('inside').hidden)return;let r=canvas.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*canvas.width,y=(e.clientY-r.top)/r.height*canvas.height;let wx=player.x+x-canvas.width/2,wy=player.y+y-canvas.height/2;if(building){placeHouse(wx,wy);return}target={x:wx,y:wy};menuDismissed=-1});window.addEventListener('keydown',e=>{let d={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'}[e.key];if(d){e.preventDefault();pressed.add(d)}});window.addEventListener('keyup',e=>{let d={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'}[e.key];if(d)pressed.delete(d)});
+
+// おうちの中：タップで歩くミニゲーム。外の草原の座標や保存データは変更しない。
+const walkRoom=document.getElementById('walkRoom');
+const roomWalker=document.getElementById('roomWalker');
+const walkMark=document.getElementById('walkMark');
+let roomPos={x:0.5,y:0.72},roomGoal=null,roomLast=performance.now();
+const furnitureTypes={bed:{emoji:'🛏️',name:'ベッド',cost:{wood:3,petals:1}},desk:{emoji:'🪑',name:'つくえ',cost:{wood:2,stone:1}},shelf:{emoji:'📚',name:'ほんだな',cost:{wood:4,stone:1}}};
+const furnitureKey='kanji-world-furniture-v1';
+let furnitureByHouse={},placingFurniture=null,insideHouseIndex=-1,selectedFurniture=-1;
+try{const saved=JSON.parse(localStorage.getItem(furnitureKey));if(saved&&typeof saved==='object'&&!Array.isArray(saved))furnitureByHouse=saved}catch(e){}
+const furnitureStatus=document.getElementById('furnitureStatus');
+const furnitureButtons=document.getElementById('furnitureButtons');
+const cancelFurniture=document.getElementById('cancelFurniture');
+function furnitureList(){const key=String(insideHouseIndex);if(!Array.isArray(furnitureByHouse[key]))furnitureByHouse[key]=[];return furnitureByHouse[key]}
+function saveFurniture(){try{localStorage.setItem(furnitureKey,JSON.stringify(furnitureByHouse))}catch(e){furnitureStatus.textContent='⚠️ ほぞんが できなかったよ'}}
+function drawFurniture(){walkRoom.querySelectorAll('.placedFurniture').forEach(el=>el.remove());furnitureList().forEach((item,i)=>{const kind=furnitureTypes[item.kind];if(!kind||item.kind==='shelf'||!Number.isFinite(item.x)||!Number.isFinite(item.y))return;const el=document.createElement('span');el.className='placedFurniture '+item.kind+(selectedFurniture===i?' selected':'');el.textContent=kind.emoji;el.setAttribute('role','button');el.setAttribute('aria-label',kind.name+'を ながおしして うごかす');el.dataset.index=i;el.style.left=(item.x*100)+'%';el.style.top=(item.y*100)+'%';walkRoom.append(el)})}
+// かぐは ながおし（350ms）して、そのまま ゆびで うごかす。
+let dragFurniture=null,dragTimer=null,dragStart=null,ignoreRoomTap=false;
+function roomCoords(e){const r=walkRoom.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width,y:(e.clientY-r.top)/r.height}}
+function clampFurniture(pt){return {x:Math.max(.13,Math.min(.87,pt.x)),y:Math.max(.68,Math.min(.91,pt.y))}}
+function finishDrag(commit){
+  if(dragTimer!==null){clearTimeout(dragTimer);dragTimer=null}
+  if(!dragFurniture)return;
+  const d=dragFurniture;dragFurniture=null;
+  if(d.active){
+    if(!commit){d.item.x=d.original.x;d.item.y=d.original.y}
+    else{saveFurniture();furnitureStatus.textContent='🎉 かぐを うごかしたよ！ じどうで ほぞんしたよ'}
+    drawFurniture();document.getElementById('roomHelp').textContent='👣 ゆかを タップで あるくよ！ かぐは ながおしで うごかせるよ！';
+  }
+}
+walkRoom.addEventListener('pointerdown',e=>{
+  const el=e.target.closest('.placedFurniture');
+  if(!el)return;
+  e.preventDefault();e.stopPropagation();ignoreRoomTap=true;
+  const i=Number(el.dataset.index),item=furnitureList()[i];
+  if(!item||placingFurniture)return;
+  roomGoal=null;walkMark.style.display='none';
+  dragStart={x:e.clientX,y:e.clientY};
+  dragFurniture={index:i,item,original:{x:item.x,y:item.y},active:false,pointerId:e.pointerId,el};
+  try{el.setPointerCapture(e.pointerId)}catch(_){}
+  dragTimer=setTimeout(()=>{
+    if(!dragFurniture||dragFurniture.pointerId!==e.pointerId)return;
+    dragFurniture.active=true;el.classList.add('dragging');
+    furnitureStatus.textContent='🪑 そのまま ゆびを うごかしてね！';
+    document.getElementById('roomHelp').textContent='👆 ゆびを はなすと かぐが きまるよ！';
+    if(navigator.vibrate)navigator.vibrate(25);
+  },350);
+},{capture:true});
+walkRoom.addEventListener('pointermove',e=>{
+  const d=dragFurniture;if(!d||d.pointerId!==e.pointerId)return;
+  if(!d.active){if(Math.hypot(e.clientX-dragStart.x,e.clientY-dragStart.y)>14){clearTimeout(dragTimer);dragTimer=null}return}
+  e.preventDefault();const pt=clampFurniture(roomCoords(e));
+  d.item.x=pt.x;d.item.y=pt.y;
+  d.el.style.left=pt.x*100+'%';d.el.style.top=pt.y*100+'%';
+});
+walkRoom.addEventListener('pointerup',e=>{if(dragFurniture&&dragFurniture.pointerId===e.pointerId){e.stopPropagation();finishDrag(true)}});
+walkRoom.addEventListener('pointercancel',e=>{if(dragFurniture&&dragFurniture.pointerId===e.pointerId)finishDrag(false)});
+function resetFurnitureMode(){placingFurniture=null;selectedFurniture=-1;walkRoom.classList.remove('placing');cancelFurniture.hidden=true;furnitureButtons.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed','false'))}
+furnitureButtons.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{const kind=btn.dataset.furn,def=furnitureTypes[kind];if(!def)return;const missing=Object.entries(def.cost).some(([k,n])=>stock[k]<n);if(missing){furnitureStatus.textContent='🪵 ざいりょうが たりないよ！ そとで あつめよう';return}selectedFurniture=-1;drawFurniture();placingFurniture=kind;roomGoal=null;walkMark.style.display='none';walkRoom.classList.add('placing');cancelFurniture.hidden=false;furnitureButtons.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));furnitureStatus.textContent=def.emoji+' ゆかの すきな ばしょを タップしてね！'}));
+cancelFurniture.onclick=()=>{resetFurnitureMode();furnitureStatus.textContent='つくりたい かぐを えらんでね！'};
+function placeFurniture(x,y){const kind=furnitureTypes[placingFurniture];if(!kind)return;if(y<.68||y>.91||x<.12||x>.88){furnitureStatus.textContent='🌷 ゆかの うえに おいてね！';return}if(furnitureList().some(item=>item.kind!=='shelf'&&Math.hypot((item.x-x)*1.4,item.y-y)<.16)){furnitureStatus.textContent='🌷 そこには もう かぐが あるよ！';return}if(Math.hypot((roomPos.x-x)*1.4,roomPos.y-y)<.09){furnitureStatus.textContent='🌷 じぶんの いない ばしょに おいてね！';return}if(Object.entries(kind.cost).some(([k,n])=>stock[k]<n)){resetFurnitureMode();furnitureStatus.textContent='ざいりょうが たりないよ！';return}for(const [k,n] of Object.entries(kind.cost)){stock[k]-=n;document.getElementById(k).textContent=stock[k]}furnitureList().push({kind:placingFurniture,x,y});saveVillage();saveFurniture();drawFurniture();resetFurnitureMode();furnitureStatus.textContent='🎉 '+kind.name+'が できたよ！ じどうで ほぞんしたよ'}
+
+function initRoomWalker(){selectedFurniture=-1;roomWalker.innerHTML=heroSVG(chosen);roomPos={x:.5,y:.72};roomGoal=null;drawRoomWalker();document.getElementById('roomHelp').textContent='👣 ゆかを タップで あるくよ！ かぐは ながおしで うごかそう！'}
+function drawRoomWalker(){roomWalker.style.left=(roomPos.x*100)+'%';roomWalker.style.top=(roomPos.y*100)+'%'}
+walkRoom.addEventListener('pointerdown',e=>{
+  if(e.target.closest('.placedFurniture'))return;
+  const r=walkRoom.getBoundingClientRect();
+  const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+  if(placingFurniture){placeFurniture(x,y);return}
+
+  // 家具に重ならないように、歩けるのは床の部分だけ
+  if(furnitureList().some(item=>item.kind!=='shelf'&&Math.hypot((item.x-x)*1.4,item.y-y)<.15)){
+    document.getElementById('roomHelp').textContent='🪑 かぐの ない ところを タップしてね！';return;
+  }
+  roomGoal={x:Math.max(.12,Math.min(.88,x)),y:Math.max(.66,Math.min(.89,y))};
+  walkMark.style.left=(roomGoal.x*100)+'%';walkMark.style.top=(roomGoal.y*100)+'%';walkMark.style.display='block';
+  document.getElementById('roomHelp').textContent='👣 あるいているよ！';
+});
+function roomFrame(now){const dt=Math.min((now-roomLast)/1000,.05);roomLast=now;
+  if(!document.getElementById('inside').hidden&&roomGoal){
+    if(furnitureList().some(item=>item.kind!=='shelf'&&Math.hypot((item.x-roomGoal.x)*1.4,item.y-roomGoal.y)<.11)){roomGoal=null;walkMark.style.display='none';}
+    if(!roomGoal){requestAnimationFrame(roomFrame);return}
+    const dx=roomGoal.x-roomPos.x,dy=roomGoal.y-roomPos.y,d=Math.hypot(dx,dy);
+    if(d<.008){roomPos={...roomGoal};roomGoal=null;walkMark.style.display='none';document.getElementById('roomHelp').textContent='🌷 ついたよ！ ほかの ばしょも タップしてみよう';}
+    else{const m=Math.min(d,dt*.42);roomPos.x+=dx/d*m;roomPos.y+=dy/d*m;roomWalker.style.transform='translate(-50%,-50%) rotate('+Math.sin(now/100)*2+'deg)';}
+    drawRoomWalker();
+  }
+  requestAnimationFrame(roomFrame);
+}
+requestAnimationFrame(roomFrame);
+
+// ちず：自分を中央に表示し、発見済みの場所と家だけを表示する。
+const miniMap=document.getElementById('miniMap'),bigMap=document.getElementById('bigMap'),mapOverlay=document.getElementById('mapOverlay');
+let mapScale=1.0, mapView={x:0,y:0};
+function mapDraw(c,scale,center){
+ const g=c.getContext('2d'),w=c.width,h=c.height;
+ g.fillStyle='#d9e9bc';g.fillRect(0,0,w,h);
+ const project=(x,y)=>({x:w/2+(x-center.x)*scale,y:h/2+(y-center.y)*scale});
+ g.strokeStyle='#a3c78b';g.lineWidth=1;
+ for(let x=Math.floor((center.x-w/(2*scale))/200)*200;x<center.x+w/(2*scale);x+=200){let p=project(x,0);g.beginPath();g.moveTo(p.x,0);g.lineTo(p.x,h);g.stroke()}
+ for(let y=Math.floor((center.y-h/(2*scale))/200)*200;y<center.y+h/(2*scale);y+=200){let p=project(0,y);g.beginPath();g.moveTo(0,p.y);g.lineTo(w,p.y);g.stroke()}
+ const mark=(x,y,icon,label)=>{const p=project(x,y);if(p.x<0||p.x>w||p.y<0||p.y>h)return;g.font=(c===miniMap?'24':'30')+'px system-ui';g.textAlign='center';g.fillText(icon,p.x,p.y+6);if(label&&c===bigMap){g.font='bold 14px system-ui';g.lineWidth=3;g.strokeStyle='#fff9e9';g.strokeText(label,p.x,p.y+25);g.fillStyle='#513e2d';g.fillText(label,p.x,p.y+25)}};
+ mark(0,0,'🏕️', 'はじまり');
+ discovered.forEach(i=>{const p=places[i];if(p)mark(p.x,p.y,'⭐',p.name)});
+ houses.forEach((h,i)=>mark(h.x,h.y,'🏡','おうち '+(i+1)));
+ const me=project(player.x,player.y);g.beginPath();g.fillStyle='#2675d8';g.arc(me.x,me.y,c===miniMap?9:10,0,Math.PI*2);g.fill();g.lineWidth=3;g.strokeStyle='white';g.stroke();
+}
+function refreshMaps(){mapDraw(miniMap,.12,{x:player.x,y:player.y});if(!mapOverlay.hidden)mapDraw(bigMap,mapScale,mapView)}
+function showMap(){mapView={x:player.x,y:player.y};mapScale=.24;mapOverlay.hidden=false;refreshMaps()}
+document.getElementById('openMap').onclick=showMap;miniMap.onclick=showMap;
+document.getElementById('mapClose').onclick=()=>mapOverlay.hidden=true;
+bigMap.addEventListener('pointerdown',e=>{
+ const r=bigMap.getBoundingClientRect(),px=(e.clientX-r.left)/r.width*bigMap.width,py=(e.clientY-r.top)/r.height*bigMap.height;
+ const wx=mapView.x+(px-bigMap.width/2)/mapScale,wy=mapView.y+(py-bigMap.height/2)/mapScale;
+ const destinations=[...Array.from(discovered).map(i=>({x:places[i].x,y:places[i].y,name:places[i].name})),...houses.map((h,i)=>({...h,name:'おうち '+(i+1)})),{x:0,y:0,name:'はじまり'}];
+ const nearest=destinations.map(p=>({...p,d:Math.hypot(wx-p.x,wy-p.y)})).sort((a,b)=>a.d-b.d)[0];
+ if(nearest&&nearest.d<90/mapScale*.24){target={x:nearest.x,y:nearest.y};menuDismissed=-1;houseDismissed=-1;mapOverlay.hidden=true;building=false;updateBuild();document.getElementById('buildTip').textContent='🧭 '+nearest.name+' に むかって あるくよ！'}
+ else document.getElementById('mapHelp').textContent='⭐ や 🏡 を タップすると、そこへ あるくよ！';
+});
+let mapTick=0;function mapLoop(){if(++mapTick%12===0)refreshMaps();requestAnimationFrame(mapLoop)}requestAnimationFrame(mapLoop);
+</script></body></html>
